@@ -1,52 +1,65 @@
 % raffinages.sty - Package LaTeX pour raffinages
 % Auteur : Mazen Messai
-% Date : [Date]
-% Description : Package pour les raffinages en LaTeX
-
-
-% MIT License
-% 
-% Copyright (c) 2024 Mazen Messai
-% 
-% Permission is hereby granted, free of charge, to any person obtaining a copy
-% of this software and associated documentation files (the "Software"), to deal
-% in the Software without restriction, including without limitation the rights
-% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-% copies of the Software, and to permit persons to whom the Software is
-% furnished to do so, subject to the following conditions:
-% 
-% The above copyright notice and this permission notice shall be included in all
-% copies or substantial portions of the Software.
-% 
-% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-% SOFTWARE.
+% Date : [à compléter]
+% Description : Package pour la rédaction de raffinages structurés
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{raffinages}[2024/06/11 v1.0 Package pour les raffinages]
-\RequirePackage{graphicx}
+\ProvidesPackage{raffinages}[2025/05/06 v1.0 Package pour les raffinages]
+\RequirePackage{xparse}
 \RequirePackage{color}
-\RequirePackage{fancyvrb}
-\RequirePackage{listings}
-\RequirePackage{amsmath}
-\RequirePackage{amssymb}
-\RequirePackage{hyperref}
-\RequirePackage{lipsum}
+\RequirePackage{etoolbox}
+\RequirePackage{tabularx}
 
-% Commande permettant d'écrire un commentaire.
-\newcommand{\commentaire}[1]{
-    \textcolor{blue}{-{}- \texttt{#1}}\par
+% --- Commentaires ---
+\newcommand{\commentaire}[1]{%
+  \textcolor{blue}{-{}- \texttt{#1}}\par
 }
 
-% Commande permettant d'écrire une en-tête de raffinage.
-% Usage ; \raffinage{numéro}{description}
-% Exemple : \raffinage{1}{Initialiser une pile}
-% Résulttat : R1 : Initialiser une pile
-\newcommand{\raffinage}[2]{
-    \noindent\texttt{R#1 :} \texttt{#2}\par
+% --- Raffinage principal ---
+\NewDocumentEnvironment{raffinage}{mm}
+{
+  \par\noindent\texttt{R#1 : #2}\par
 }
-\endinput
+
+% --- Étapes (action + [flux]) ---
+\NewDocumentCommand{\step}{m o}{%
+  \noindent
+  \begin{minipage}{\dimexpr\linewidth - \leftskip\relax}
+    \begin{tabularx}{\linewidth}{@{\hskip\leftskip}X r}
+      \texttt{#1} & \IfValueT{#2}{\texttt{#2}}%
+    \end{tabularx}%
+  \end{minipage}%
+  \par
+}
+
+% --- Environnement à indentation automatique ---
+\newenvironment{ifstructure}[1]
+{
+    \par\noindent\texttt{Si #1 alors :}\par
+    \begingroup\leftskip=2em
+}
+{
+    \leftskip=0em\noindent\texttt{FinSi}\par
+    \endgroup
+}
+
+\newenvironment{whilestructure}[1]
+{
+  \par\noindent\texttt{Tantque #1 faire :}\par
+  \begingroup\leftskip=2em
+}
+{
+  \leftskip=0em\noindent\texttt{FinTantque}\par
+}
+
+\newenvironment{forstructure}[1]
+{
+  \par\noindent\texttt{Pour #1 faire :}\par
+  \begingroup\leftskip=2em
+}
+{
+  \leftskip=0em\noindent\texttt{FinPour}\par
+  \endgroup
+}
+
+

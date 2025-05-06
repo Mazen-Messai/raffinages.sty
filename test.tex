@@ -1,17 +1,23 @@
-\documentclass[a4paper]{article}
-
-% Marges fines
-\usepackage[left=1.5cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
-
-% Chargement du package à tester
+\documentclass{article}
+\usepackage[a4paper,margin=1cm]{geometry}
 \usepackage{raffinages}
+
+\title{Manuel d'utilisation du package \texttt{raffinages.sty}}
+\author{Mazen Messai}
+\date{\today}
 
 \begin{document}
 
 
-\commentaire{Ceci est un commentaire de test.}
+\begin{raffinage}{O}{ Compresser un fichier grâce à l’algorithme de Huffman"}
+\end{raffinage}
 
-\raffinage{1}{Initialiser une pile}
-\raffinage{2}{Ajouter un élément à la pile}
-\commentaire{Ceci est un autre commentaire de test.}
+\begin{raffinage}{1}{Comment "Compresser un fichier grâce à l’algorithme de Huffman"}
+    %\commentaire{Fich et Cmpr sont des fichier, Arbr est un arbre, Tbl est un tableau4
+    %d’arbre, et Parc et List sont des chaînes de caractère}  
+    \step{Créer la table des occurnces}{Fich : out, Tbl : out}
+
+\end{raffinage}
+
+
 \end{document}
