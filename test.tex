@@ -22,11 +22,17 @@
     \step{Ouvrir le fichier}[Fich : in]
     \begin{whilestructure}{non vide(Fich)}
         \step{Lire le caractère}[Car : out]
-        \step{Indx <- Chercher(Tbl, Car)}[Car, Tbl : in, Indx : Out]
+        \step{Indx ← Chercher(Tbl, Car)}[Car, Tbl : in, Indx : Out]
         \step{Mettree à jour la table}[Tbl : in out, Indx : in]
     \end{whilestructure}
 \end{raffinage}
 
-
+\begin{raffinage}{3}{Blabla}
+    \begin{ifstructure}{condition}
+        \step{Faire quelque chose}[Fich : in]
+        \step{Faire autre chose}[Fich : in]
+        \step{Faire autre chose}[Fich : in]
+    \end{ifstructure}
+\end{raffinage}
 
 \end{document}
