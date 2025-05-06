@@ -1,3 +1,3 @@
-- [ ] Réparer les steps
+- [x] Réparer les steps
 - [ ] Plusieurs ifs
-- [ ] Couleur
+- [x] Couleur
