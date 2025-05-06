@@ -13,7 +13,10 @@
 
 % --- Commentaires ---
 \newcommand{\commentaire}[1]{%
-  \begin{minipage}{\linewidth}
+  \par
+  \noindent
+  \leftskip=1em
+  \begin{minipage}{\dimexpr\linewidth - \leftskip\relax}
     \textcolor{blue}{-{}- \texttt{#1}}\par
   \end{minipage}
 }
