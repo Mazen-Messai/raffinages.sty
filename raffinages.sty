@@ -6,9 +6,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{raffinages}[2025/05/06 v1.0 Package pour les raffinages]
 \RequirePackage{xparse}
-\RequirePackage{color}
+\RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{etoolbox}
 \RequirePackage{tabularx}
+\RequirePackage{lineno}
 
 % --- Commentaires ---
 \newcommand{\commentaire}[1]{%
@@ -18,7 +19,16 @@
 % --- Raffinage principal ---
 \NewDocumentEnvironment{raffinage}{mm}
 {
+  \begin{linenumbers}
   \par\noindent\texttt{R#1 : #2}\par
+  \begingroup\leftskip=1em 
+}
+{
+    \leftskip=0em\noindent\par
+    \endgroup
+    \end{linenumbers}
+    \par\rule{0pt}{0pt}\par
+
 }
 
 % --- Étapes (action + [flux]) ---
@@ -39,17 +49,18 @@
     \begingroup\leftskip=2em
 }
 {
-    \leftskip=0em\noindent\texttt{FinSi}\par
+    \leftskip=1em\noindent\texttt{Fin Si}\par
     \endgroup
 }
 
 \newenvironment{whilestructure}[1]
 {
-  \par\noindent\texttt{Tantque #1 faire :}\par
+  \par\noindent\texttt{\textcolor{Rhodamine}{Tantque} \textcolor{LimeGreen}{#1} \textcolor{Rhodamine}{faire} :}\par
   \begingroup\leftskip=2em
 }
 {
-  \leftskip=0em\noindent\texttt{FinTantque}\par
+  \leftskip=1em\noindent\texttt{\textcolor{Rhodamine}{Fin Tantque}}\par
+  \endgroup
 }
 
 \newenvironment{forstructure}[1]
@@ -58,7 +69,7 @@
   \begingroup\leftskip=2em
 }
 {
-  \leftskip=0em\noindent\texttt{FinPour}\par
+  \leftskip=1em\noindent\texttt{Fin Pour}\par
   \endgroup
 }
 
