@@ -44,7 +44,7 @@ Maintenant que le niveau 0 est fait, vous vouleez surement introduire des sous a
 
 Cela donnera la sortie suivante (normalement les flots devrait être alignées, si c'est pas le cas... PR ?) :
 ```
-R1 : Comment "Compresser un fichier gr^ace `a l’algorithme de Huffman"
+R1 : Comment "Compresser un fichier grâce à l’algorithme de Huffman"
    Créer la table des occurnces                   Fich : out, Tbl : out
    Créer l’arbre de Huffman                       Tbl : in, Arbr : out
    Parcourir l’arbre de Huffman                   Arbr : in, Parc : out
@@ -59,7 +59,7 @@ Vous pouvez aussi utiliser des structure de contrôle, du genre des boucles, vou
 \begin{whilestructure}{non vide(Fich)}
     \step{Lire le caractère}[Car : out]
     \step{Indx ← Chercher(Tbl, Car)}[Car, Tbl : in, Indx : out]
-    \step{Mettree à jour la table}[Tbl : in out, Indx : in]
+    \step{Mettre à jour la table}[Tbl : in out, Indx : in]
 \end{whilestructure}
 
 \step{Faire quelque chose}[Fich : in]
@@ -72,17 +72,16 @@ Vous pouvez aussi utiliser des structure de contrôle, du genre des boucles, vou
 ```
 Vous aurez l'output suivante :
 ```
-   Compresser le fichier               Fich : in, List : in, Cmpr : out
 Initialiser(Tbl)                                              Tbl : out
 Ouvrir le fichier                                             Fich : in
 Tant que non vide(Fich) faire :
-  Lire le caract`ere                                          Car : out
+  Lire le caractère                                           Car : out
   Indx ← Chercher(Tbl, Car)                   Car, Tbl : in, Indx : out
   Mettree à jour la table                       Tbl : in out, Indx : in
 Fin Tant que
 Faire quelque chose                                           Fich : in
 Si condition alors :
   Faire quelque chose                                         Fich : in
-  Faire autre chose                                        Fich : in out
+  Faire autre chose                                       Fich : in out
 Fin Si
 ```
