@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage[a4paper,margin=2cm]{geometry}
 \usepackage{raffinages}
+\usepackage{showframe}
 \begin{document}
 \section*{Exemple d'utilisation de l'environnement \texttt{raffinage}}
 
@@ -22,12 +23,14 @@
     \step{Ouvrir le fichier}[Fich : in]
     \begin{whilestructure}{non vide(Fich)}
         \step{Lire le caractère}[Car : out]
-        \step{Indx ← Chercher(Tbl, Car)}[Car, Tbl : in, Indx : Out]
+        \step{Indx ← Chercher(Tbl, Car)}[Car, Tbl : in, Indx : out]
         \step{Mettree à jour la table}[Tbl : in out, Indx : in]
     \end{whilestructure}
 \end{raffinage}
 
 \begin{raffinage}{3}{Blabla}
+    \step{Faire quelque chose}[Fich : in]
+
     \begin{ifstructure}{condition}
         \step{Faire quelque chose}[Fich : in]
         \step{Faire autre chose}[Fich : in]

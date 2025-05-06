@@ -13,7 +13,9 @@
 
 % --- Commentaires ---
 \newcommand{\commentaire}[1]{%
-  \textcolor{blue}{-{}- \texttt{#1}}\par
+  \begin{minipage}{\linewidth}
+    \textcolor{blue}{-{}- \texttt{#1}}\par
+  \end{minipage}
 }
 
 
@@ -22,21 +24,22 @@
 {
   \begin{linenumbers}
   \par\noindent\texttt{R#1 : #2}\par
-  \begingroup\leftskip=2em 
+  \begingroup
+  \leftskip=1em
 }
 {
-    \leftskip=0em\noindent\par
-    \endgroup
-    \end{linenumbers}
-    \par\rule{0pt}{0pt}\par
-
+  \noindent\par
+  \endgroup
+  \end{linenumbers}
+  \leftskip=0em
+  \par\rule{0pt}{0pt}\par
 }
 
 % --- Étapes (action + [flux]) ---
 \NewDocumentCommand{\step}{m o}{%
   \noindent
-  \begin{minipage}{\linewidth}
-    \begin{tabularx}{\linewidth}{X r}
+  \begin{minipage}{\dimexpr\linewidth - \leftskip\relax}  % Forcer la largeur à \linewidth
+    \begin{tabularx}{\linewidth}{@{\hskip\leftskip}X r}
       \texttt{#1} & \IfValueT{#2}{\texttt{#2}}%
     \end{tabularx}%
   \end{minipage}%
@@ -46,31 +49,37 @@
 % --- Environnement à indentation automatique ---
 \newenvironment{ifstructure}[1]
 {
+    \leftskip=1em
     \par\noindent\texttt{\textcolor{DeepPink1}{Si} #1 \textcolor{DeepPink1}{alors} :}\par
     \begingroup\leftskip=2em
 }
 {
-    \leftskip=1em\noindent\texttt{Fin \textcolor{DeepPink1}{Si}}\par
+    \leftskip=1em
+    \par\noindent\texttt{Fin \textcolor{DeepPink1}{Si}}\par
     \endgroup
 }
 
 \newenvironment{whilestructure}[1]
 {
-  \par\noindent\texttt{\textcolor{DeepPink1}{Tantque} #1 \textcolor{DeepPink1}{faire} :}\par
+  \leftskip=1em
+  \par\noindent\texttt{\textcolor{DeepPink1}{Tant que} #1 \textcolor{DeepPink1}{faire} :}\par
   \begingroup\leftskip=2em
 }
 {
-  \leftskip=1em\noindent\texttt{Fin \textcolor{DeepPink1}{Tantque}}\par
+  \leftskip=1em
+  \noindent\texttt{Fin \textcolor{DeepPink1}{Tant que}}\par
   \endgroup
 }
 
 \newenvironment{forstructure}[1]
 {
+  \leftskip=1em
   \par\noindent\texttt{\textcolor{DeepPink1}{Pour} #1 \textcolor{DeepPink1}{faire} :}\par
   \begingroup\leftskip=2em
 }
 {
-  \leftskip=1em\noindent\texttt{Fin \textcolor{DeepPink1}{Pour}}\par
+  \leftskip=1em
+  \noindent\texttt{Fin \textcolor{DeepPink1}{Pour}}\par
   \endgroup
 }
 
